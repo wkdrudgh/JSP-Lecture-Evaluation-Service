@@ -55,7 +55,7 @@
 	<div class="card bg-light mt-3">
 		<div class="card-header bg-light">
 			<div class="row">
-				<div class="col-8 text-left">컴퓨터개론&nbps;<small>장경호</small></div>
+				<div class="col-8 text-left">컴퓨터개론&nbsp;<small>장경호</small></div>
 				<div class="col-4 text-right">
 					종합<span style="color: red;">A</span>
 				</div>				
@@ -83,7 +83,7 @@
 	<div class="card bg-light mt-3">
 		<div class="card-header bg-light">
 			<div class="row">
-				<div class="col-8 text-left">알고리즘&nbps;<small>이순신</small></div>
+				<div class="col-8 text-left">알고리즘&nbsp;<small>이순신</small></div>
 				<div class="col-4 text-right">
 					종합<span style="color: red;">B</span>
 				</div>				
@@ -111,7 +111,7 @@
 	<div class="card bg-light mt-3">
 		<div class="card-header bg-light">
 			<div class="row">
-				<div class="col-8 text-left">프로그래밍언어&nbps;<small>홍길동</small></div>
+				<div class="col-8 text-left">프로그래밍언어&nbsp;<small>홍길동</small></div>
 				<div class="col-4 text-right">
 					종합<span style="color: red;">B</span>
 				</div>				

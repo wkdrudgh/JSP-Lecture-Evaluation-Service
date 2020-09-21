@@ -1,7 +1,11 @@
-<%@page import="javax.mail.internet.InternetAddress"%>
-<%@page import="javax.mail.internet.MimeMessage"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
-<%@ page import="javax.mail.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="javax.mail.Transport" %>
+<%@ page import="javax.mail.Message" %>
+<%@ page import="javax.mail.Address" %>
+<%@ page import="javax.mail.internet.InternetAddress" %>
+<%@ page import="javax.mail.internet.MimeMessage" %>
+<%@ page import="javax.mail.Session" %>
+<%@ page import="javax.mail.Authenticator" %>
 <%@ page import="java.util.Properties" %>
 <%@ page import="user.UserDAO" %>
 <%@ page import="util.SHA256" %>
@@ -16,7 +20,7 @@
 	if(userID == null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('로그인을 해주세요.')");
+		script.println("alert('로그인을 해주세요.');");
 		script.println("location.href = 'userLogin.jsp'");
 		script.println("</script>");
 		script.close();
@@ -26,15 +30,15 @@
 	if(emailChecked == true){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('이미 인증된 회원입니다.')");
-		script.println("location.href = 'index'.jsp'");
+		script.println("alert('이미 인증된 회원입니다.');");
+		script.println("location.href = 'index.jsp'");
 		script.println("</script>");
 		script.close();
 		return;
 	}
 	
 	String host = "http://localhost:8088/Lecture_Evaluation/";
-	String from = "구글 이메일 계정";
+	String from = "구글아이디";
 	String to = uesrDAO.getUserEmail(userID);
 	String subject = "강의평가를 위한 이메일 인증 메일입니다.";
 	String content = "다음 링크에 접속하여 이메일 인증을 진행하세요." +
@@ -43,13 +47,13 @@
 	Properties p = new Properties();
 	p.put("mail.smtp.user", from);
 	p.put("mail.smtp.host", "smtp.googlemail.com");
-	p.put("mail.smtp.port", "465");
-	p.put("mail.smtp.starttls.emable", "true");
+	p.put("mail.smtp.port", "465"); 
+	p.put("mail.smtp.starttls.enable", "true");
 	p.put("mail.smtp.auth", "true");
 	p.put("mail.smtp.debug", "true");
-	p.put("mail.smtp.socketFactiory.port", "465");
-	p.put("mail.smtp.socketFactiory.class", "javax.net.ssl.SSLsocketFactory");
-	p.put("mail.smtp.socketFactiory.fallback", "false");
+	p.put("mail.smtp.socketFactory.port", "465");
+	p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	p.put("mail.smtp.socketFactory.fallback", "false");
 	
 	try{
 		Authenticator auth = new Gmail();
@@ -61,9 +65,10 @@
 		msg.setFrom(fromAddr);
 		Address toAddr = new InternetAddress(to);
 		msg.addRecipient(Message.RecipientType.TO, toAddr);
-		msg.setContent(content, "text/html;charset=UTF-8");
+		msg.setContent(content, "text/html;charset=UTF8");
 		Transport.send(msg);
 	}catch(Exception e){
+		e.printStackTrace();
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('오류가 발생했습니다.')");
@@ -101,9 +106,18 @@
 						회원 관리				
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown">
+<%
+	if(userID == null){					
+%>
 						<a class="dropdown-item" href="userLogin.jsp">로그인</a>
 						<a class="dropdown-item" href="userJoin.jsp">회원가입</a>
+<%
+	}else{
+%>
 						<a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+<%
+	}
+%>
 					</div>
 				</li>
 			</ul>

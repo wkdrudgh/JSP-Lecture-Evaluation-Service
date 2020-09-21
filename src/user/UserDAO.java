@@ -109,7 +109,7 @@ public class UserDAO {
 	}
 	
 	public boolean setUserEmailChecked(String userID){
-		String SQL = "UPDATE USER SET userEmailChecked = ture WHERE userID = ?";
+		String SQL = "UPDATE USER SET userEmailChecked = true WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -58,8 +58,8 @@
 					</div>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-lable="Search">
+			<form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
+				<input type="text" name="serach" class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요." aria-lable="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
 			</form>
 		</div>
@@ -72,7 +72,7 @@
 			</div>
 			<div class="form-group">
 				<label>비밀번호</label>
-				<input type="text" name="userPassword" class="form-control">
+				<input type="text" name="userPassword" class="form-control"> <!-- password를 사용하세요 -->
 			</div>
 			<button type="submit" class="btn btn-primary">로그인</button>
 		</form>

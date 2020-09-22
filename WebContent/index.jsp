@@ -109,7 +109,7 @@
 			</select>
 			<select name="searchType" class="form-control mx-1 mt-2">
 				<option value="최신순">최신순</option>
-				<option value="추천순" <% if(searchType.equals("추천순")) out.println("selected"); %>>추천수</option>
+				<option value="추천순" <% if(searchType.equals("추천순")) out.println("selected"); %>>추천순</option>
 			</select>
 			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을 입력하세요.">
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
@@ -146,8 +146,8 @@
 					<span style="color: green;">(추천: <%= evaluation.getLikeCount() %>)</span>
 				</div>
 				<div class="col-3 text-right">
-					<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-					<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+					<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=<%= evaluation.getEvaluationID()%>">추천</a>
+					<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=<%= evaluation.getEvaluationID()%>">삭제</a>
 				</div>
 			</div>
 		</div>
